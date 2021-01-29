@@ -63,14 +63,14 @@ class Bot(BotBase):
 
         async def on_error(self, err, *args, **kwargs):
             if err == "on_command_error":
-                await args[0].send("Algo salió mal.")
+                await args[0].send("Amlgom samlió maml.")
 
-            await self.stdout.send("Ha ocurrido un error")
+            await self.stdout.send("Ha omcumrrimdo umn emrror")
             raise
 
         async def on_command_error(self, ctx, exc):
             if isinstance(exc, CommandNotFound):
-                await ctx.send("Cmamo el prro")
+                await ctx.send("Comamndo no emnkomntrado")
             elif hasattr(exc, "original"):
                 raise exc.original
             else:
@@ -95,6 +95,7 @@ class Bot(BotBase):
 
 
         async def on_message(self, message):
-            pass
+            if not message.author.bot:
+                await self.process_commands(message)
 
 bot = Bot()
