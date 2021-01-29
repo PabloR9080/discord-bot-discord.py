@@ -4,6 +4,7 @@ from discord import Embed
 from discord.ext.commands import Bot as BotBase
 from discord.ext.commands import CommandNotFound
 from glob import glob
+import discord
 
 
 PREFIX= "!"
@@ -58,6 +59,8 @@ class Bot(BotBase):
             print("bot connected")
 
 
+
+
         async def on_disconnect(self):
             print("bot disconnected")
 
@@ -83,7 +86,7 @@ class Bot(BotBase):
                 #self.guild = self.get_guild(642214035550502919)
                 print("bot ready")
                 channel = self.get_channel(776343201102430238)
-
+                await self.change_presence(activity=discord.Game(name='ola si lo lees'))
                 while not self.cogs_ready.all_ready():
                     await sleep(0.5)
 
