@@ -1,6 +1,7 @@
 from discord import Intents
+from discord import Embed
 from discord.ext.commands import Bot as BotBase
-
+from discord.ext.commands import CommandNotFound
 
 PREFIX= "!"
 OWNER_IDS = [270292360334802954]
@@ -27,14 +28,31 @@ class Bot(BotBase):
         async def on_connect(self):
             print("bot connected")
 
+
         async def on_disconnect(self):
             print("bot disconnected")
+
+        async def on_error(self, err, *args, **kwargs):
+            if err == "on_command_error":
+                await args[0].send("Algo salió mal.")
+            raise
+
+        async def on_command_error(self, ctx, exc):
+            if isinstance(exc, CommandNotFound):
+                await ctx.send("Cmamo el prro")
+            elif hasattr(exc, "original"):
+                raise exc.original
+            else:
+                raise exc
 
         async def on_ready(self):
             if not self.ready:
                 self.ready = True
                 #self.guild = self.get_guild(642214035550502919)
                 print("bot ready")
+                channel = self.get_channel(776343201102430238)
+                await channel.send("XD ola")
+
             else:
                 print("bot reconnected")
 
