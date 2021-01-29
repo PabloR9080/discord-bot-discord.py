@@ -11,6 +11,9 @@ class Bot(BotBase):
             self.guild = None
             self.ready = False
 
+            #No pressence intents:
+            # intents = Intents.default()
+            # intents.members = True
             super().__init__(command_prefix=PREFIX, owner_ids=OWNER_IDS, intents= Intents.all())
 
         def run(self, version):
