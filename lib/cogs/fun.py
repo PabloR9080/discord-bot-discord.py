@@ -58,6 +58,14 @@ class Fun(Cog):
     async def lenin(self,ctx):
         message = await ctx.send(f"👻")
         await message.add_reaction('👻')
+    @command(name="cake", aliases=["keki","caking","caker","quake"])
+    async def lenin(self,ctx):
+        message = await ctx.send(f"yui cake 🙄")
+        await message.add_reaction('💩')
+        await message.add_reaction('🇨')
+        await message.add_reaction('🅰️')
+        await message.add_reaction('🇰')
+        await message.add_reaction('🇪')
 
 
     @Cog.listener()
