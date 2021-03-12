@@ -4,6 +4,7 @@ from discord.utils import get
 import discord
 from random import choice
 from asyncio import sleep
+from discord import File
 
 class Fun(Cog):
     def __init__(self,bot):
@@ -31,8 +32,6 @@ class Fun(Cog):
                 await sleep(2)
                 await user.move_to(channel)
                 print(f"{user.name} ha sido movido")
-            elif user.Name is None:
-                await ctx.send(f"No hay naiden en aduan")
             else:
                 await ctx.send(f"Nosepuede :'v ")
 
@@ -56,16 +55,43 @@ class Fun(Cog):
 
     @command(name="lenin", aliases=["Lenin"])
     async def lenin(self,ctx):
-        message = await ctx.send(f"👻")
+        message = await ctx.send(f"{choice(('👻','El niño'))}")
         await message.add_reaction('👻')
+
+
     @command(name="cake", aliases=["keki","caking","caker","quake"])
-    async def lenin(self,ctx):
+    async def cake(self,ctx):
         message = await ctx.send(f"yui cake 🙄")
         await message.add_reaction('💩')
         await message.add_reaction('🇨')
         await message.add_reaction('🅰️')
         await message.add_reaction('🇰')
         await message.add_reaction('🇪')
+
+    @command(name="ana", aliases=["ano"])
+    async def ana(self,ctx):
+        message = await ctx.send(f"{choice(('https://tenor.com/view/ana-beaver-tp-gif-18732481','https://tenor.com/view/tp-teleperformance-ana-sheldon-bigbang-theory-gif-18986132'))}")
+
+    @command(name="ctm", aliases=["chingatumadre"])
+    async def ctm(self,ctx):
+        message = await ctx.send(f"Chinga tu madre {choice(('celia','apokinto','babi','pablo','tosino','sislia','el infante'))}")
+        await message.add_reaction('🇨')
+        await message.add_reaction('🇹')
+        await message.add_reaction('〽️')
+
+    @command(name="babo", aliases=["babañin"])
+    async def babo(self,ctx):
+        channel = ctx.channel
+        await channel.send(file=File("lib/img/babo.jpeg"))
+        pass
+
+
+    @command(name="pantoja", aliases=["pantoj","pantojita","panj","breadj","panjoto","panjot","panjota","🍞J","🍞j"])
+    async def roll(self,ctx):
+        message = await ctx.send(f"https://tenor.com/view/mairena-pantoja-polla-carmen-gif-11612945")
+
+
+
 
 
     @Cog.listener()
